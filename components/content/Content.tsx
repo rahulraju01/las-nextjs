@@ -2,9 +2,9 @@ import { userListState, userNameState } from "@/atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserDashboard } from "./UserDashboard";
 import { v4 as uuidv4 } from 'uuid';
-import { User } from "@/lib/utils";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { User } from "@/types/model";
 
 export const Content = () => {
     const [userName, setUserName] = useRecoilState(userNameState);

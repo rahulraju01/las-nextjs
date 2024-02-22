@@ -1,5 +1,4 @@
-import { Content } from "@/components/content/Content";
-import { HomePage } from "./start/page";
+import { HomePage } from "@/components/content/HomePage";
 
 export default function Home() {
   return (

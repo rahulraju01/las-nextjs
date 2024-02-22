@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header/HeaderTab";
-import { Content } from "@/components/content/Content";
 import { Footer } from "@/components/footer/FooterTab";
-import Head from "next/head";
-import { RecoilRoot } from "recoil";
 
-// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",

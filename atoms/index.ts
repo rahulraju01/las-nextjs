@@ -1,4 +1,4 @@
-import { User } from "@/lib/utils";
+import { User } from "@/types/model";
 import { atom } from "recoil";
 
 export const userListState = atom<User[]>({
