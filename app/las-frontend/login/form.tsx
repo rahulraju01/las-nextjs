@@ -29,14 +29,19 @@ export function LoginComponent() {
         },
     })
 
-    const  onSubmit = (data: z.infer<typeof FormSchema>, e:FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        signIn("credentials", { email: data.email, password: data.password, redirect: false})
+    const  onSubmit = async (e:FormEvent<HTMLFormElement>, data: z.infer<typeof FormSchema>) => {
+        e.preventDefault(); 
+        // console.log(data);
+        // form.trigger();
+        const loginResponse = await signIn("credentials", { email: data.email, password: data.password, redirect: false});
+        if(loginResponse?.ok) {
+            console.log(`--- Login Response -- : ${JSON.stringify(loginResponse, null, 2)}`);
+        }
     }
 
     return (
         <Form {...form}>
-            <form onSubmit={(e) => form.handleSubmit((formData)  => onSubmit(formData, e))} className="w-2/3 space-y-6">
+            <form onSubmit={(e) => onSubmit(e, form.getValues())} className="w-2/3 space-y-6">
                 <FormField
                     control={form.control}
                     name="email"

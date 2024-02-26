@@ -1,4 +1,5 @@
-export interface User {
-    id: string,
-    name: string
-  }
+import { User } from "next-auth";
+
+export interface LoginUser extends User {
+  csrfToken: string
+}
