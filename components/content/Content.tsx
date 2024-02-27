@@ -4,7 +4,7 @@ import { UserDashboard } from "./UserDashboard";
 import { v4 as uuidv4 } from 'uuid';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { User } from "@/types/model";
+import { LoginUser } from "@/types/model";
 
 export const Content = () => {
     const [userName, setUserName] = useRecoilState(userNameState);
@@ -15,7 +15,7 @@ export const Content = () => {
     }
 
     const addUser = () => {
-        const user: User = { id: uuidv4(), name: userName };
+        const user: LoginUser = { id: uuidv4(), name: userName };
         setUserData((prevUserData) => [...prevUserData, user]);
     }
 

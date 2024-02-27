@@ -1,7 +1,7 @@
-import { User } from "@/types/model";
+import { LoginUser} from "@/types/model";
 import { atom } from "recoil";
 
-export const userListState = atom<User[]>({
+export const userListState = atom<LoginUser[]>({
     key: "userListState", default: []
 });
 

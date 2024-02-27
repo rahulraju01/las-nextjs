@@ -10,6 +10,9 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
 import { signIn } from "next-auth/react"
 import { FormEvent } from "react"
+import React, { useEffect } from 'react';
+import { useRouter } from "next/router"
+import { redirect } from "next/navigation"
 
 const FormSchema = z.object({
     email: z.string().min(2, {
@@ -21,6 +24,7 @@ const FormSchema = z.object({
 })
 
 export function LoginComponent() {
+    
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -62,7 +66,7 @@ export function LoginComponent() {
                         <FormItem>
                             <FormLabel>Password</FormLabel>
                             <FormControl>
-                                <Input placeholder="Password" {...field} />
+                                <Input type="password" placeholder="Password" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -73,3 +77,5 @@ export function LoginComponent() {
         </Form>
     )
 }
+
+
