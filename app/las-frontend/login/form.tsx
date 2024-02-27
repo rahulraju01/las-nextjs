@@ -11,7 +11,7 @@ import { toast } from "@/components/ui/use-toast"
 import { signIn } from "next-auth/react"
 import { FormEvent } from "react"
 import React, { useEffect } from 'react';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/navigation'
 import { redirect } from "next/navigation"
 
 const FormSchema = z.object({
@@ -24,7 +24,7 @@ const FormSchema = z.object({
 })
 
 export function LoginComponent() {
-    
+    const router = useRouter();
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -35,11 +35,13 @@ export function LoginComponent() {
 
     const  onSubmit = async (e:FormEvent<HTMLFormElement>, data: z.infer<typeof FormSchema>) => {
         e.preventDefault(); 
-        // console.log(data);
         // form.trigger();
         const loginResponse = await signIn("credentials", { email: data.email, password: data.password, redirect: false});
         if(loginResponse?.ok) {
+            console.log('--- Response Returned from SignIn Method --');
             console.log(`--- Login Response -- : ${JSON.stringify(loginResponse, null, 2)}`);
+            router.push('/');
+            router.refresh();
         }
     }
 
